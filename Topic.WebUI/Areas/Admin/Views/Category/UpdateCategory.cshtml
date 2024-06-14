@@ -1,0 +1,13 @@
+﻿@model UpdateCategoryDto
+@{
+	ViewData["Title"] = "Kategoriler";
+	ViewData["SubTitle"] = "Kategori Guncelleme";
+	Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<form method="post">
+	<input type="hidden" asp-for="CategoryId" />
+	<label>Kategory Adi</label>
+	<input type="text" class="form-control" asp-for="CategoryName" />
+	<button type="submit" class="btn btn-primary">Guncelle</button>
+

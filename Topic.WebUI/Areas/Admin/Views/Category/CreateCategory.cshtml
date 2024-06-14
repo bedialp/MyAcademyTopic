@@ -1,0 +1,10 @@
+﻿@model CreateCategoryDto
+@{
+	ViewData["SubTitle"] = "Yeni Kategori Olustur";
+	Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<form method="post">
+	<label>Kategory Adi</label>
+	<input type="text" class="form-control" asp-for="CategoryName" />
+</form>
