@@ -13,7 +13,7 @@ namespace Topic.DataAccessLayer.Abstract
 		List<T> GetFilteredList(Expression<Func<T, bool>> filter);
 		T GetById(int id);
 		T GetByFilter(Expression<Func<T, bool>> filter);
-		void Delete(T entity);
+		void Delete(int id);
 		void Create(T entity);
 		void Update(T entity);
 	}
