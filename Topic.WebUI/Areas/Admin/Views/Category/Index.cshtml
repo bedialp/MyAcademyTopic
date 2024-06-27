@@ -10,18 +10,18 @@
 		<th>Durum</th>
 		<th>Islemler</th>
 	</tr>
-	@foreach(var item in Model)
+	@foreach (var item in Model)
 	{
 		<tr>
 			<th>@item.CategoryId</th>
 			<th>@item.CategoryName</th>
 			<th>@item.Status</th>
 			<td>
-				<a asp-action="DeleteCategory" asp-route-id="@item.CategoryId" class="btn btn-danger">Sil</a>
-				<a asp-action="UpdateCategory" asp-route-id="@item.CategoryId" class="btn btn-info">Guncelle</a>
+				<a asp-action="DeleteCategory" asp-route-id="@item.CategoryId" class="btn btn-outline-danger">Sil</a>
+				<a asp-action="UpdateCategory" asp-route-id="@item.CategoryId" class="btn btn-outline-info">Guncelle</a>
 			</td>
 		</tr>
 	}
 </table>
-<a asp-action="CreateCategory" class="btn btn-primary">Yeni Kategori Olustur</a>
+<a asp-action="CreateCategory" class="btn btn-outline-primary">Yeni Kategori Olustur</a>
 

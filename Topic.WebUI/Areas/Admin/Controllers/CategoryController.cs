@@ -18,13 +18,13 @@ namespace Topic.WebUI.Areas.Admin.Controllers
 
 		public async Task<IActionResult> Index()
 		{
-			var jsonData = await _client.GetAsync("https://localhost:44300/api/category"); // API URL for Category Controller in Topic.WebAPI project is used here. 
-			//if (responseMessage.IsSuccessStatusCode) // If the response message is successful, the JSON data is read from the response message.
-			//{
-			//	var jsonData = await responseMessage.Content.ReadAsStringAsync(); // JSON data is read from the response message.
-			//	var values = JsonConvert.DeserializeObject<List<ResultCategoryDto>>(jsonData); // JSON data is deserialized into a list of ResultCategoryDto objects.
-			//	return View(values);
-			//}
+			var responseMessage = await _client.GetAsync("https://localhost:7007/api/categories"); // API URL for Category Controller in Topic.WebAPI project is used here. 
+			if (responseMessage.IsSuccessStatusCode) // If the response message is successful, the JSON data is read from the response message.
+			{
+				var jsonData = await responseMessage.Content.ReadAsStringAsync(); // JSON data is read from the response message.
+				var values = JsonConvert.DeserializeObject<List<ResultCategoryDto>>(jsonData); // JSON data is deserialized into a list of ResultCategoryDto objects.
+				return View(values);
+			}
 			return View();
 		}
 
@@ -39,7 +39,7 @@ namespace Topic.WebUI.Areas.Admin.Controllers
 		{
 			var category = JsonConvert.SerializeObject(createCategoryDto); // CreateCategoryDto object is serialized into JSON data.
 			var stringContent = new StringContent(category, Encoding.UTF8, "application/json"); // JSON data is converted into a string content.
-			var responseMessage = await _client.PostAsync("https://localhost:44300/api/category", stringContent); // API URL for Category Controller in Topic.WebAPI project is used here.
+			var responseMessage = await _client.PostAsync("https://localhost:7007/api/categories", stringContent); // API URL for Category Controller in Topic.WebAPI project is used here.
 			if (responseMessage.IsSuccessStatusCode) // If the response message is successful, the user is redirected to the Index action method.
 			{
 				return RedirectToAction("Index");
@@ -50,7 +50,7 @@ namespace Topic.WebUI.Areas.Admin.Controllers
 
 		public async Task<IActionResult> DeleteCategory(int id)
 		{
-			var responseMessage = await _client.DeleteAsync("https://localhost:44300/api/category/" + id); // API URL for Category Controller in Topic.WebAPI project is used here.
+			var responseMessage = await _client.DeleteAsync("https://localhost:7007/api/categories/" + id); // API URL for Category Controller in Topic.WebAPI project is used here.
 			if (responseMessage.IsSuccessStatusCode) // If the response message is successful, the user is redirected to the Index action method.
 			{
 				return RedirectToAction("Index");
@@ -61,10 +61,10 @@ namespace Topic.WebUI.Areas.Admin.Controllers
 		[HttpGet]
 		public async Task<IActionResult> UpdateCategory(int id)
 		{
-			var responseMessage = await _client.GetAsync("https://localhost:44300/api/category/" + id); 
-			if (responseMessage.IsSuccessStatusCode) 
+			var responseMessage = await _client.GetAsync("https://localhost:7007/api/categories/" + id);
+			if (responseMessage.IsSuccessStatusCode)
 			{
-				var jsonData = await responseMessage.Content.ReadAsStringAsync(); 
+				var jsonData = await responseMessage.Content.ReadAsStringAsync();
 				var values = JsonConvert.DeserializeObject<UpdateCategoryDto>(jsonData); // JSON data is deserialized into a ResultCategoryDto object.
 				return View(values);
 			}
@@ -73,10 +73,10 @@ namespace Topic.WebUI.Areas.Admin.Controllers
 		[HttpPost]
 		public async Task<IActionResult> UpdateCategory(UpdateCategoryDto updateCategoryDto)
 		{
-			var category = JsonConvert.SerializeObject(updateCategoryDto); 
-			var stringContent = new StringContent(category, Encoding.UTF8, "application/json"); 
-			var responseMessage = await _client.PutAsync("https://localhost:44300/api/category", stringContent); 
-			if (responseMessage.IsSuccessStatusCode) 
+			var category = JsonConvert.SerializeObject(updateCategoryDto);
+			var stringContent = new StringContent(category, Encoding.UTF8, "application/json");
+			var responseMessage = await _client.PutAsync("https://localhost:7007/api/categories", stringContent);
+			if (responseMessage.IsSuccessStatusCode)
 			{
 				return RedirectToAction("Index");
 			}

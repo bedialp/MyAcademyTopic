@@ -1,5 +1,6 @@
 ﻿@model CreateCategoryDto
 @{
+	ViewData["Title"] = "Kategoriler";
 	ViewData["SubTitle"] = "Yeni Kategori Olustur";
 	Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
 }
@@ -7,4 +8,6 @@
 <form method="post">
 	<label>Kategory Adi</label>
 	<input type="text" class="form-control" asp-for="CategoryName" />
+	<br />
+	<button class="btn btn-outline-primary">Kaydet</button>
 </form>
