@@ -1,0 +1,32 @@
+﻿@model CreateBlogDto
+@{
+	ViewData["Title"] = "Bloglar";
+	ViewData["SubTitle"] = "Yeni Blog Olustur";
+	Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+<form method="post">
+	<label>Blog Basligi</label>
+	<input type="text" asp-for="Title" class="form-control" />
+	<br />
+	<label>Kategori</label>
+	<select asp-for="CategoryId" asp-items="@ViewBag.categories" class="form-control">
+		<option>Kategori Seçiniz</option>
+	</select>
+	<br />
+	<label>Kapak Resmi</label>
+	<input type="text" asp-for="CoverImageUrl" class="form-control" />
+	<br />
+	<label>Blog Resim 1</label>
+	<input type="text" asp-for="Image1" class="form-control" />
+	<br />
+	<label>Blog Resim 2</label>
+	<input type="text" asp-for="Image2" class="form-control" />
+	<br />
+	<label>Kisa Aciklama</label>
+	<input type="text" asp-for="ShortDescription" class="form-control" />
+	<br />
+	<label>Uzun Aciklama</label>
+	<textarea type="text" asp-for="LongDescription" class="form-control" rows="5"></textarea>
+	<br />
+	<button class="btn btn-outline-primary">Kaydet</button>
+</form>

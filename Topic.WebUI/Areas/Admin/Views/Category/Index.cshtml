@@ -2,6 +2,7 @@
 @{
 	ViewData["Title"] = "Kategoriler";
 	Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+	int count = 0;
 }
 <table class="table table-bordered table-hover">
 	<tr>
@@ -12,8 +13,9 @@
 	</tr>
 	@foreach (var item in Model)
 	{
+		count++;
 		<tr>
-			<th>@item.CategoryId</th>
+			<th>@count</th>
 			<th>@item.CategoryName</th>
 			<th>@item.Status</th>
 			<td>
