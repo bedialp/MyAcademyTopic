@@ -22,10 +22,17 @@ namespace Topic.API.Controllers
 			return Ok(blogs);
 		}
 
+		[HttpGet("GetBlogsByCategoryId/{id}")]
+		public IActionResult GetBlogsByCategoryId(int id)
+		{
+			var values = _blogService.TGetBlogsByCategoryId(id); 
+			return Ok(values);
+		}
+
 		[HttpGet("{id}")]
 		public IActionResult GetBlogById(int id)
 		{
-			var value = _blogService.TGetById(id);
+			var value = _blogService.TGetBlogWithCategoryById(id);
 			var blog = _mapper.Map<ResultBlogDto>(value);
 			return Ok(blog);
 		}

@@ -12,5 +12,9 @@ namespace Topic.DataAccessLayer.Concrete
 {
 	public class EFCategoryDal(TopicContext context) : GenericRepository<Category>(context), ICategoryDal
 	{
+		public List<Category> GetActiveCategories()
+		{
+			return [.. _context.Categories.Where(x => x.Status == true)];
+		}
 	}
 }

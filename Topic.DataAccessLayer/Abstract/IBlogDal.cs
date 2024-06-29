@@ -10,5 +10,7 @@ namespace Topic.DataAccessLayer.Abstract
 	public interface IBlogDal : IGenericDal<Blog>
 	{
 		List<Blog> GetBlogsWithCategories();
+		Blog GetBlogWithCategoryById(int id);
+		List<Blog> GetBlogsByCategoryId(int id);
 	}
 }

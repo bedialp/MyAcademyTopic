@@ -9,5 +9,6 @@ namespace Topic.BusinessLayer.Abstract
 {
 	public interface ICategoryService : IGenericService<Category>
 	{
+		List<Category> TGetActiveCategories();
 	}
 }

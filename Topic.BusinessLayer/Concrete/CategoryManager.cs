@@ -9,7 +9,13 @@ using Topic.EntityLayer.Entities;
 
 namespace Topic.BusinessLayer.Concrete
 {
-	public class CategoryManager(IGenericDal<Category> genericDal) : GenericManager<Category>(genericDal), ICategoryService
+	public class CategoryManager(IGenericDal<Category> genericDal, ICategoryDal categoryDal) : GenericManager<Category>(genericDal), ICategoryService
 	{
+		private readonly ICategoryDal _categoryDal = categoryDal;
+
+		public List<Category> TGetActiveCategories()
+		{
+			return _categoryDal.GetActiveCategories();
+		}
 	}
 }

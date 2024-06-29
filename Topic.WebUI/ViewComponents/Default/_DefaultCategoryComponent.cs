@@ -9,13 +9,13 @@ namespace Topic.WebUI.ViewComponents.Default
 
 		public _DefaultCategoryComponent(HttpClient client)
 		{
-			client.BaseAddress = new Uri("https://localhost:7007/api/");
+			client.BaseAddress = new Uri("https://localhost:7007/api/"); // API URL here 
 			_client = client;
 		}
 
-		public async Task<IViewComponentResult> InvokeAsync()
+		public async Task<IViewComponentResult> InvokeAsync() 
 		{
-			var values = await _client.GetFromJsonAsync<List<ResultCategoryDto>>("categories");
+			var values = await _client.GetFromJsonAsync<List<ResultCategoryDto>>("categories/GetActiveCategories"); // API URL here 
 			return View(values);
 		}
 	}
